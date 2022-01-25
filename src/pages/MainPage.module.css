@@ -1,0 +1,21 @@
+.bookSpace {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 70%;
+  margin: 15px 15px 30px 30px;
+}
+.trendingBooks {
+  position: relative;
+  /* min-height: 500px; */
+  width: 70%;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+@media (max-width: 860px) {
+  .trendingBooks {
+    width: 100%;
+  }
+}
