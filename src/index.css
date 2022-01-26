@@ -18,3 +18,7 @@ code {
 .centered {
   text-align: center;
 }
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: purple;
+}

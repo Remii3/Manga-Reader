@@ -1,5 +1,5 @@
-import Card from "../UI/Card";
 import { Routes, Route, Link } from "react-router-dom";
+
 import classes from "./SingleSwipe-Book.module.css";
 
 function SingleSwipeBook(props) {
@@ -22,12 +22,11 @@ function SingleSwipeBook(props) {
               <div className={classes.descriptionSpace}>
                 <p>{description}</p>
               </div>
-
               <p>status</p>
             </div>
             <div className={classes.photo}>
               <Link to={`/${title}${id}`}>
-                <img src={imgLink} alt="" />
+                <img src={imgLink} alt="manga img" />
               </Link>
             </div>
           </div>

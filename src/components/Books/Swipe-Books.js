@@ -1,27 +1,29 @@
-import classes from "./Swipe-Book.module.css";
-import useHttps from "../../hooks/useHttp";
-import { fetchOneBooks } from "../../lib/fetchPages";
-import { useEffect } from "react";
-import SingleSwipeBook from "./SingleSwipe-Book";
-import { Fragment } from "react";
-
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper";
-
+import { useEffect, Fragment } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import SingleSwipeBook from "./SingleSwipe-Book";
+
+import useHttps from "../../hooks/useHttp";
+import { fetchOneBook } from "../../lib/fetchPages";
+
+import { EffectCoverflow, Pagination, Autoplay } from "swiper";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
+import classes from "./Swipe-Book.module.css";
+import "./test.css";
+
 function SwipeBook() {
   const {
     sendRequest,
     status,
-    data: receivedData,
+    data: fetchedData,
     error,
-  } = useHttps(fetchOneBooks, true);
+  } = useHttps(fetchOneBook, true);
 
   useEffect(() => {
-    sendRequest();
+    sendRequest(null);
   }, [sendRequest]);
 
   if (status === "pending") {
@@ -30,7 +32,7 @@ function SwipeBook() {
 
   if (
     status === "completed" &&
-    (!receivedData || receivedData.data.length === 0)
+    (!fetchedData || fetchedData.data.length === 0)
   ) {
     return <h1>{error}</h1>;
   }
@@ -38,9 +40,6 @@ function SwipeBook() {
   const pagination = {
     clickable: true,
     dynamicBullets: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },
   };
 
   return (
@@ -51,13 +50,11 @@ function SwipeBook() {
           effect={"coverflow"}
           spaceBetween={50}
           slidesPerView={1}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          autoplay={{ delay: 4500, disableOnInteraction: false }}
           loop={true}
           pagination={pagination}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
         >
-          {receivedData.data.map((book) => {
+          {fetchedData.data.map((book) => {
             return (
               <SwiperSlide key={book.id}>
                 <SingleSwipeBook
@@ -72,7 +69,6 @@ function SwipeBook() {
           })}
         </Swiper>
       </div>
-      <div className={`${classes["swipeButtons-Space"]} centered`}></div>
     </Fragment>
   );
 }

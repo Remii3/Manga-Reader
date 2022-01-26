@@ -1,9 +1,12 @@
 import { useEffect } from "react";
+
 import Book from "../components/Books/Book";
-import classes from "./MainPage.module.css";
+import SwipeBook from "../components/Books/Swipe-Books";
+
 import fetchAllBooks from "../lib/fetchPages";
 import useHttps from "../hooks/useHttp";
-import SwipeBook from "../components/Books/Swipe-Books";
+
+import classes from "./MainPage.module.css";
 
 function MainPage() {
   const {
@@ -14,7 +17,7 @@ function MainPage() {
   } = useHttps(fetchAllBooks, true);
 
   useEffect(() => {
-    sendRequest();
+    sendRequest(null);
   }, [sendRequest]);
 
   if (status === "pending") {
@@ -32,16 +35,20 @@ function MainPage() {
     <div>
       <div className={classes.trendingBooks}>{<SwipeBook />}</div>
       <div className={classes.bookSpace}>
-        {receivedData.data.length > 0 &&
-          receivedData.data.map((book) => (
-            <Book
-              key={book.id}
-              id={book.id}
-              title={book.attributes.canonicalTitle}
-              description={book.attributes.description}
-              imgLink={book.attributes.posterImage.tiny}
-            />
-          ))}
+        {receivedData !== null &&
+          receivedData.data.length > 0 &&
+          receivedData.data.map((book) => {
+            console.log(book);
+            return (
+              <Book
+                key={book.id}
+                title={book.attributes.canonicalTitle}
+                episodes={book.relationships.episodes.links.related}
+                imgLink={book.attributes.posterImage.tiny}
+                bookIntel={book.attributes}
+              />
+            );
+          })}
       </div>
     </div>
   );
