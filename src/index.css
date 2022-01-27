@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #16151d;
 }
 
 code {
@@ -21,4 +22,7 @@ code {
 
 .swiper-pagination .swiper-pagination-bullet-active {
   background-color: purple;
+}
+.mainBlack-color {
+  background-color: #16151d;
 }

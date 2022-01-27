@@ -1,21 +1,51 @@
+@import "../__globalColors.css";
+
+.outerSpace {
+  margin: 0 auto;
+  width: 100%;
+  min-width: 1400px;
+  max-width: 1400px;
+}
 .bookSpace {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  width: 70%;
-  margin: 15px 15px 30px 30px;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 .trendingBooks {
   position: relative;
-  /* min-height: 500px; */
-  width: 70%;
+  width: 100%;
   max-width: 800px;
-  padding: 20px;
-  border: 1px solid black;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1400px) {
+  .outerSpace {
+    min-width: 100%;
+  }
+}
+
+@media (min-width: 840px) {
+  .outerSpace {
+    width: 80%;
+  }
+  .bookSpace {
+    min-width: 900px;
+    width: 60%;
+  }
   .trendingBooks {
+    min-width: 675px;
+    max-width: 675px;
+    width: 70%;
+  }
+}
+@media (max-width: 940px) {
+  .bookSpace {
+    min-width: 100px;
     width: 100%;
+  }
+}
+@media (min-width: 800px) {
+  .outerSpace {
+    padding: 0 20px;
   }
 }

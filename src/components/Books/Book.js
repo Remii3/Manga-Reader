@@ -9,10 +9,10 @@ import { fetchEpisodes } from "../../lib/fetchPages";
 
 import classes from "./Book.module.css";
 
-////////////////// to finish, bookIntel holds real updateTime and chapters count, fix the connections
+////////////////// to finish, make func to tell how old is chapter
 
 function Book(props) {
-  const { title, imgLink, episodes, bookIntel } = props;
+  const { title, imgLink, chapters } = props;
   const {
     sendRequest,
     status,
@@ -21,8 +21,8 @@ function Book(props) {
   } = useHttps(fetchEpisodes, true);
 
   useEffect(() => {
-    sendRequest(episodes);
-  }, [sendRequest, episodes]);
+    sendRequest(chapters);
+  }, [sendRequest, chapters]);
 
   const slicedEpisodes = () => {
     if (fetchedData.data.length > 6) {
@@ -51,21 +51,13 @@ function Book(props) {
         element={
           <Card>
             <div className={classes.outerSpace}>
-              <div>
-                <div className={classes["mainInformation-space"]}>
-                  <p>rating</p>
-                  <div>
-                    <h1>{title}</h1>
-                    <p>type</p>
-                  </div>
-                </div>
-
-                <p>status</p>
-              </div>
               <div className={classes.photo}>
                 <Link to={`/${title}`}>
                   <img src={imgLink} alt="" />
                 </Link>
+              </div>
+              <div className={classes["mainInformation-space"]}>
+                <h3>{title}</h3>
                 <ul>
                   {fetchedData !== null &&
                     fetchedData.data.length > 0 &&

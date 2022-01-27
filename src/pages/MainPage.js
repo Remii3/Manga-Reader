@@ -32,20 +32,18 @@ function MainPage() {
   }
 
   return (
-    <div>
+    <div className={classes.outerSpace}>
       <div className={classes.trendingBooks}>{<SwipeBook />}</div>
       <div className={classes.bookSpace}>
         {receivedData !== null &&
           receivedData.data.length > 0 &&
           receivedData.data.map((book) => {
-            console.log(book);
             return (
               <Book
                 key={book.id}
                 title={book.attributes.canonicalTitle}
-                episodes={book.relationships.episodes.links.related}
+                chapters={book.relationships.chapters.links.related}
                 imgLink={book.attributes.posterImage.tiny}
-                bookIntel={book.attributes}
               />
             );
           })}

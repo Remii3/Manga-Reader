@@ -8,11 +8,10 @@ import { fetchOneBook } from "../../lib/fetchPages";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
 
+import classes from "./Swipe-Book.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import classes from "./Swipe-Book.module.css";
-import "./test.css";
 
 function SwipeBook() {
   const {
@@ -21,7 +20,6 @@ function SwipeBook() {
     data: fetchedData,
     error,
   } = useHttps(fetchOneBook, true);
-
   useEffect(() => {
     sendRequest(null);
   }, [sendRequest]);
@@ -36,10 +34,10 @@ function SwipeBook() {
   ) {
     return <h1>{error}</h1>;
   }
-
+  if (status === "completed" && (fetchedData || fetchedData.data.length > 0)) {
+  }
   const pagination = {
     clickable: true,
-    dynamicBullets: true,
   };
 
   return (

@@ -1,0 +1,9 @@
+:root {
+  --mainGrey-bgColor: #222;
+  --secondaryGrey-bgColor: #2f2f2f;
+  --mainPurple-bgColor: #913fe2;
+  --mainGrey-border: 1px solid #312f40;
+  --mainWhite-color: #fff;
+  --mainGrey-color: #999;
+  --secondaryGrey-color: #555;
+}

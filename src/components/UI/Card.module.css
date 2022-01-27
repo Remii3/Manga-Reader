@@ -1,5 +1,17 @@
+@import "../../__globalColors.css";
+
 .card {
   border-radius: 9px;
   padding: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 8px #202020;
+  width: 100%;
+  margin: 10px 0;
+  background-color: var(--mainGrey-bgColor);
+}
+
+@media (min-width: 860px) {
+  .card {
+    min-width: 400px;
+    max-width: 400px;
+  }
 }
