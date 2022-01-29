@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SingleSwipeBook from "./SingleSwipe-Book";
 
 import useHttps from "../../hooks/useHttp";
-import { fetchOneBook } from "../../lib/fetchPages";
+import { fetchFewBook } from "../../lib/fetchPages";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
 
@@ -18,24 +18,27 @@ function SwipeBook() {
     sendRequest,
     status,
     data: fetchedData,
-    error,
-  } = useHttps(fetchOneBook, true);
+    error: errorMessage,
+  } = useHttps(fetchFewBook, true);
   useEffect(() => {
     sendRequest(null);
   }, [sendRequest]);
 
   if (status === "pending") {
-    return <h1>Loading...</h1>;
+    return <h1 className="loading">Loading...</h1>;
   }
 
-  if (
-    status === "completed" &&
-    (!fetchedData || fetchedData.data.length === 0)
-  ) {
-    return <h1>{error}</h1>;
+  if (status === "completed" && errorMessage !== null) {
+    errorMessage.map((error) => {
+      return (
+        <div key={errorMessage.length}>
+          <h1>{error.title}</h1>
+          <p>For more information open console</p>
+        </div>
+      );
+    });
   }
-  if (status === "completed" && (fetchedData || fetchedData.data.length > 0)) {
-  }
+
   const pagination = {
     clickable: true,
   };
@@ -60,7 +63,7 @@ function SwipeBook() {
                   id={book.id}
                   title={book.attributes.canonicalTitle}
                   description={book.attributes.description}
-                  imgLink={book.attributes.posterImage.tiny}
+                  imgLink={book.attributes.posterImage}
                 />
               </SwiperSlide>
             );

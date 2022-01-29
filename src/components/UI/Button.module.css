@@ -1,0 +1,10 @@
+@import "../../__globalColors.css";
+
+.button {
+  padding: 3px 2px;
+  font-size: 13px;
+  background-color: var(--mainPurple-bgColor);
+  color: var(--mainWhite-color);
+  border: none;
+  cursor: pointer;
+}

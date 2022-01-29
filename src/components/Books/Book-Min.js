@@ -7,11 +7,11 @@ import ChapterData from "../Chapters/Chapter-Data";
 import useHttps from "../../hooks/useHttp";
 import { fetchEpisodes } from "../../lib/fetchPages";
 
-import classes from "./Book.module.css";
+import classes from "./Book-Min.module.css";
 
 ////////////////// to finish, make func to tell how old is chapter
 
-function Book(props) {
+function BookMin(props) {
   const { title, imgLink, chapters } = props;
   const {
     sendRequest,
@@ -40,11 +40,11 @@ function Book(props) {
   }
 
   const slicedEpisodes = () => {
-    if (fetchedData.data.length > 6) {
-      const sliced = fetchedData.data.slice(0, 5);
-      return <ChapterData chapterInfo={sliced} withDate={true} />;
+    if (fetchedData.data.length > 1) {
+      const sliced = fetchedData.data.slice(0, 1);
+      return <ChapterData chapterInfo={sliced} />;
     } else {
-      return <ChapterData chapterInfo={fetchedData.data} withDate={true} />;
+      return <ChapterData chapterInfo={fetchedData.data} />;
     }
   };
 
@@ -53,7 +53,7 @@ function Book(props) {
       <Route
         path={``}
         element={
-          <Card className={"card-Book"}>
+          <Card className={"card-BookMini"}>
             <div className={classes.outerSpace}>
               <div className={classes.photo}>
                 <Link to={`/Books/${title}`}>
@@ -75,4 +75,4 @@ function Book(props) {
     </Routes>
   );
 }
-export default Book;
+export default BookMin;

@@ -6,10 +6,10 @@
   min-width: 1400px;
   max-width: 1400px;
 }
-.bookSpace {
+.booksSpace {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 15px;
 }
 .trendingBooks {
@@ -33,7 +33,7 @@
   .outerSpace {
     width: 80%;
   }
-  .bookSpace {
+  .booksSpace {
     min-width: 900px;
     width: 60%;
   }
@@ -44,7 +44,7 @@
   }
 }
 @media (max-width: 940px) {
-  .bookSpace {
+  .booksSpace {
     min-width: 100px;
     width: 100%;
   }

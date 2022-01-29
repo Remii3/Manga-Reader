@@ -19,7 +19,7 @@ const httpReducer = (state, action) => {
     return {
       status: "completed",
       data: null,
-      error: action.errorMessage || "Something went wrong",
+      error: action.errorMessage || "",
     };
   }
   return state;
@@ -32,13 +32,17 @@ const useHttps = (requestedFunction, startWithPending = false) => {
     error: null,
   });
   const sendRequest = useCallback(
-    async function (additionalData) {
+    async function (fetchData) {
       dispatch({ type: "SEND" });
       try {
-        const receivedData = await requestedFunction(additionalData);
-        dispatch({ type: "SUCCESS", receivedData });
+        const receivedData = await requestedFunction(fetchData);
+        if (receivedData.errors) {
+          dispatch({ type: "ERROR", errorMessage: receivedData.errors });
+        } else {
+          dispatch({ type: "SUCCESS", receivedData });
+        }
       } catch (error) {
-        dispatch({ type: "ERROR", error });
+        dispatch({ type: "ERROR", errorMessage: error });
       }
     },
     [requestedFunction]

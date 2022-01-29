@@ -1,0 +1,31 @@
+@import "../../__globalColors.css";
+
+.backPhoto {
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  filter: blur(3px) brightness(35%);
+  transform: scale(1.1);
+}
+.backdrop {
+  padding: 20px;
+  display: flex;
+  min-width: 100%;
+  position: relative;
+}
+.textSpace {
+  width: 65%;
+  color: var(--mainWhite-color);
+}
+.descriptionSpace {
+  max-height: 100px;
+  max-width: 800px;
+  overflow: hidden;
+}
+.photo {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px 0 110px;
+}

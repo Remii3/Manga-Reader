@@ -1,6 +1,6 @@
-export default async function fetchAllBooks() {
+export default async function fetchAllBooks(fetchData) {
   const response = await fetch(
-    "https://kitsu.io/api/edge/manga?page[limit]=10&page[offest]=0,sort=id",
+    `https://kitsu.io/api/edge/manga?page[limit]=${fetchData.pages}&page[offset]=${fetchData.offset}&sort=${fetchData.sorting}`,
     {
       method: "GET",
       headers: {
@@ -10,9 +10,10 @@ export default async function fetchAllBooks() {
     }
   );
   const data = await response.json();
+  console.log(data);
   return data;
 }
-export async function fetchOneBook() {
+export async function fetchFewBook() {
   const response = await fetch(
     "https://kitsu.io/api/edge/manga?page[limit]=5&page[offset]=0",
     {
@@ -26,8 +27,8 @@ export async function fetchOneBook() {
   const data = await response.json();
   return data;
 }
-export async function fetchEpisodes(link) {
-  const response = await fetch(`${link}?sort=-number`, {
+export async function fetchEpisodes(fetchData) {
+  const response = await fetch(`${fetchData.chapters}?sort=-number`, {
     method: "get",
     headers: {
       Accept: "application/vnd.api+json",

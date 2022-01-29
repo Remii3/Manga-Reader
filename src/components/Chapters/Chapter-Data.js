@@ -2,10 +2,9 @@ import { Fragment } from "react";
 import classes from "./Chapter-Data.module.css";
 
 function ChapterData(props) {
-  const { chapterInfo } = props;
+  const { chapterInfo, withDate } = props;
 
-  const date = new Date().toUTCString();
-  console.log(date);
+  // const date = new Date().toUTCString();
   return (
     <Fragment>
       {chapterInfo !== null &&
@@ -15,9 +14,15 @@ function ChapterData(props) {
             <li key={el.id}>
               <div className={classes["chapterLine-space"]}>
                 <span>Chapter {el.attributes.number}</span>{" "}
-                <span className={classes.date}>
-                  {el.attributes.createdAt.slice(0, 10)}
-                </span>
+                {withDate && (
+                  <span className={classes.date}>
+                    {el.attributes.createdAt.slice(0, 10)}
+                  </span>
+                )}
+              </div>
+              <div className={classes.rating}>
+                <div className={classes.starsSpace}></div>
+                <div className={classes.numericRate}></div>
               </div>
             </li>
           );

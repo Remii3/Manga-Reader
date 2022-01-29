@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 
-import Book from "../components/Books/Book";
-import SwipeBooks from "../components/SwipeBooks/Swipe-Books";
+import BookMin from "../components/Books/Book-Min";
 
 import fetchAllBooks from "../lib/fetchPages";
 import useHttps from "../hooks/useHttp";
 
 import Button from "../components/UI/Button";
 
-import classes from "./MainPage.module.css";
+import classes from "./BooksPage.module.css";
 
-function MainPage() {
+const BooksPage = () => {
   const [offset, setOffset] = useState(0);
-
   const {
     sendRequest,
     status,
     data: fetchedData,
     error: errorMessage,
   } = useHttps(fetchAllBooks, true);
-  let bookIncrement = 10;
+  let bookIncrement = 20;
 
   useEffect(() => {
-    sendRequest({ pages: 10, offset, sorting: "updatedAt" });
+    sendRequest({ pages: 20, offset });
   }, [sendRequest, offset]);
 
   const fetchMoreHandler = () => {
@@ -50,23 +48,22 @@ function MainPage() {
 
   return (
     <div className={classes.outerSpace}>
-      <div className={classes.trendingBooks}>{<SwipeBooks />}</div>
-      <div className={classes.bookSpace}>
+      <div className={classes.booksSpace}>
         {status === "completed" &&
           errorMessage === null &&
           fetchedData !== null &&
           fetchedData.data.map((book) => {
             return (
-              <Book
+              <BookMin
                 key={book.id}
                 title={book.attributes.canonicalTitle}
                 chapters={book.relationships.chapters.links.related}
-                imgLink={book.attributes.posterImage.tiny}
+                imgLink={book.attributes.posterImage.large}
               />
             );
           })}
         <div className={classes["button-Space"]}>
-          {offset >= 10 && (
+          {offset >= 20 && (
             <Button fetchData={fetchLessHandler}>Previous</Button>
           )}
           <Button fetchData={fetchMoreHandler}>Next</Button>
@@ -74,6 +71,5 @@ function MainPage() {
       </div>
     </div>
   );
-}
-
-export default MainPage;
+};
+export default BooksPage;
