@@ -1,0 +1,8 @@
+.button-Space {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: var(--mainGrey-border);
+  margin-top: 15px;
+}

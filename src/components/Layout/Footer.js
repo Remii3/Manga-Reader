@@ -7,7 +7,9 @@ function Footer() {
         <p>Crated by Remi</p>
       </div>
       <div className={classes.lowerFooter}>
-        <div>icon</div>
+        <div className={classes.icon}>
+          <i className="fas fa-book-open"></i>
+        </div>
         <p>
           Any business-related queries, please contact me at
           remek778790@gmail.com

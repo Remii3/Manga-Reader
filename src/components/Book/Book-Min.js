@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 import ChapterData from "../Chapters/Chapter-Data";
 
 import useHttps from "../../hooks/useHttp";
-import { fetchEpisodes } from "../../lib/fetchPages";
+import { fetchChapters } from "../../lib/fetchManga";
 
 import classes from "./Book-Min.module.css";
 
@@ -18,7 +18,7 @@ function BookMin(props) {
     status,
     data: fetchedData,
     error: errorMessage,
-  } = useHttps(fetchEpisodes, true);
+  } = useHttps(fetchChapters, true);
 
   useEffect(() => {
     sendRequest({ chapters });

@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 import ChapterData from "../Chapters/Chapter-Data";
 
 import useHttps from "../../hooks/useHttp";
-import { fetchEpisodes } from "../../lib/fetchPages";
+import { fetchChapters } from "../../lib/fetchManga";
 
 import classes from "./Book.module.css";
 
@@ -18,7 +18,7 @@ function Book(props) {
     status,
     data: fetchedData,
     error: errorMessage,
-  } = useHttps(fetchEpisodes, true);
+  } = useHttps(fetchChapters, true);
 
   useEffect(() => {
     sendRequest({ chapters });
@@ -40,7 +40,7 @@ function Book(props) {
   }
 
   const slicedEpisodes = () => {
-    if (fetchedData.data.length > 6) {
+    if (fetchedData.data.length > 5) {
       const sliced = fetchedData.data.slice(0, 5);
       return <ChapterData chapterInfo={sliced} withDate={true} />;
     } else {

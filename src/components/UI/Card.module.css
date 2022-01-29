@@ -2,8 +2,7 @@
 
 .card-Book {
   border-radius: 9px;
-  /* padding: 2px; */
-  box-shadow: 0 2px 8px #202020;
+  box-shadow: var(--mainGrey-shadow);
   width: 100%;
   margin: 10px 0;
   background-color: var(--mainGrey-bgColor);
@@ -22,8 +21,6 @@
     max-width: 400px;
   }
   .card-BookMini {
-    /* min-width: calc(100px + 200px); */
     max-width: 160px;
-    /* max-height: 300px; */
   }
 }

@@ -6,23 +6,39 @@
   min-width: 1400px;
   max-width: 1400px;
 }
+.updatedBooks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
 .bookSpace {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 15px;
+  width: 100%;
 }
+.viewAll-Space {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 15px 0;
+  border-bottom: var(--mainGrey-border);
+}
+.viewAll-Space h3 {
+  margin-bottom: 15px;
+  color: var(--mainWhite-color);
+}
+.viewAll-Space button {
+  margin-bottom: 10px;
+}
+
 .trendingBooks {
   position: relative;
   width: 100%;
   max-width: 800px;
   margin-top: calc(25px + 2px);
 }
-.button-Space {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
+
 @media (max-width: 1400px) {
   .outerSpace {
     min-width: 100%;
@@ -33,7 +49,7 @@
   .outerSpace {
     width: 80%;
   }
-  .bookSpace {
+  .updatedBooks {
     min-width: 900px;
     width: 60%;
   }
@@ -44,7 +60,7 @@
   }
 }
 @media (max-width: 940px) {
-  .bookSpace {
+  .updatedBooks {
     min-width: 100px;
     width: 100%;
   }

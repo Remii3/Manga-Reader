@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SingleSwipeBook from "./SingleSwipe-Book";
 
 import useHttps from "../../hooks/useHttp";
-import { fetchFewBook } from "../../lib/fetchPages";
+import { fetchManga } from "../../lib/fetchManga";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
 
@@ -19,9 +19,10 @@ function SwipeBook() {
     status,
     data: fetchedData,
     error: errorMessage,
-  } = useHttps(fetchFewBook, true);
+  } = useHttps(fetchManga, true);
+
   useEffect(() => {
-    sendRequest(null);
+    sendRequest({ pages: 5, offset: 0, sort: "popularityRank" });
   }, [sendRequest]);
 
   if (status === "pending") {

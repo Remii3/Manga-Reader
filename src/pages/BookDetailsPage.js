@@ -1,4 +1,4 @@
-import BookDetails from "../components/Books/BookDetails";
+import BookDetails from "../components/BookDetails/BookDetails";
 
 function BookPage() {
   return <BookDetails></BookDetails>;

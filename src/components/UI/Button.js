@@ -1,13 +1,19 @@
 import classes from "./Button.module.css";
 
 const Button = (props) => {
-  const { fetchData } = props;
+  const { fetchData, className } = props;
+
   const fetchDataHandler = () => {
-    return fetchData();
+    if (fetchData) {
+      return fetchData();
+    }
   };
 
   return (
-    <button onClick={fetchDataHandler} className={classes.button}>
+    <button
+      onClick={fetchDataHandler}
+      className={`${classes.button} ${classes[className]}`}
+    >
       {props.children}
     </button>
   );

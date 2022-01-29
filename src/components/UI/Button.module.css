@@ -1,10 +1,25 @@
 @import "../../__globalColors.css";
 
 .button {
-  padding: 3px 2px;
-  font-size: 13px;
+  padding: 6px 8px;
+  margin: 20px 10px 15px;
   background-color: var(--mainPurple-bgColor);
-  color: var(--mainWhite-color);
+  color: var(--secondaryWhite-color);
   border: none;
   cursor: pointer;
+  border-radius: 2px;
+  box-shadow: var(--mainBlack-shadow);
+}
+.big {
+  min-width: 125px;
+  font-size: 16px;
+}
+.small {
+  font-size: 13.3px;
+  min-width: 62px;
+}
+.button:hover {
+  color: var(--mainWhite-color);
+  background-color: var(--secondaryPurple-bgColor);
+  box-shadow: 2px 2px 8px var(--secondaryGrey-bgColor);
 }

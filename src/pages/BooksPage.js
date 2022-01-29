@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import BookMin from "../components/Books/Book-Min";
+import BookMin from "../components/Book/Book-Min";
 
-import fetchAllBooks from "../lib/fetchPages";
+import { fetchManga } from "../lib/fetchManga";
 import useHttps from "../hooks/useHttp";
 
 import Button from "../components/UI/Button";
@@ -16,11 +16,11 @@ const BooksPage = () => {
     status,
     data: fetchedData,
     error: errorMessage,
-  } = useHttps(fetchAllBooks, true);
+  } = useHttps(fetchManga, true);
   let bookIncrement = 20;
 
   useEffect(() => {
-    sendRequest({ pages: 20, offset });
+    sendRequest({ pages: 20, offset, sort: "id" });
   }, [sendRequest, offset]);
 
   const fetchMoreHandler = () => {

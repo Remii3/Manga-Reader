@@ -1,5 +1,6 @@
-import classes from "./Nav.module.css";
 import { Link, Routes, Route } from "react-router-dom";
+
+import classes from "./Nav.module.css";
 
 function Nav() {
   return (
@@ -9,7 +10,7 @@ function Nav() {
           <Route
             path="/*"
             element={
-              <Link to="/">
+              <Link to="/" className={classes.homeButton}>
                 <i className="fas fa-book-open"></i>
               </Link>
             }
@@ -24,7 +25,7 @@ function Nav() {
             path="/*"
             element={
               <div className={classes.lowerSpace}>
-                <Link className={classes.links} to="/auth">
+                <Link className={classes.links} to="/Auth">
                   <i className="fas fa-user-circle"></i>
                 </Link>
                 <Link className={classes.links} to="/">

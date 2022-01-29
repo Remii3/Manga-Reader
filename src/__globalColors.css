@@ -2,8 +2,18 @@
   --mainGrey-bgColor: #222;
   --secondaryGrey-bgColor: #2f2f2f;
   --mainPurple-bgColor: #913fe2;
+
   --mainGrey-border: 1px solid #312f40;
+
   --mainWhite-color: #fff;
   --mainGrey-color: #999;
   --secondaryGrey-color: #555;
+
+  /* shadow */
+  --mainBlack-shadow: 2px 1px 10px #000;
+  --mainGrey-shadow: 0 2px 8px #202020;
+
+  /* pre-hover */
+  --secondaryWhite-color: rgba(255, 255, 255, 0.8);
+  --secondaryPurple-bgColor: rgba(147, 64, 230, 0.9);
 }
