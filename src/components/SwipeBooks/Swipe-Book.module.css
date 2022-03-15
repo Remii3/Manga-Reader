@@ -1,8 +1,0 @@
-@import "../../__globalColors.css";
-
-.bookSpace {
-  min-height: 330px;
-  max-height: 330px;
-  background-color: var(--mainBlack-bgColor);
-  display: flex;
-}

@@ -1,3 +1,9 @@
-The app was created in order to provide detailed data about collected manga,
+# How to start
 
-Main goals of the site are: providing description, list of chapters, what manga is trending now
+    - npm i -> to install dependencies
+
+## Frameworks
+
+### Usage
+
+    - Page provides information on anime & manga
