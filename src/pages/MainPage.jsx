@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import LatestBooks from "../components/LatestBooks/LatestBooks";
+import LatestBooksFunctionality from "../components/LatestBooks/LatestBooks-Functionality";
 import SwipeBooks from "../components/SwipeBooks/Swipe-Books";
 
 import { SecondaryButtonStyled } from "../styles/shared/Button.styled.jsx";
@@ -29,7 +29,7 @@ function MainPage() {
           </Link>
         </BooksUpperButtonSpaceStyled>
         <BooksSpaceStyled>
-          <LatestBooks />
+          <LatestBooksFunctionality />
         </BooksSpaceStyled>
       </UpdatedBooksOuterStyled>
     </MainOuterStyled>

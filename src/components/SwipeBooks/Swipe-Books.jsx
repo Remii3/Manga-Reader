@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import SwipeBookInner from "./Swipe-Book_Inner";
 
-import useHttps from "../../hooks/useHttp";
+import { useHttps } from "../../hooks/useHttps";
 import { fetchManga } from "../../lib/fetchManga";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
@@ -31,14 +31,15 @@ function SwipeBook() {
   }
 
   if (status === "completed" && errorMessage !== null) {
-    errorMessage.map((error) => {
-      return (
-        <div key={errorMessage.length}>
-          <h1>{error.title}</h1>
-          <p>For more information open console</p>
-        </div>
-      );
-    });
+    return <>{console.log(errorMessage)}</>;
+    // errorMessage.map((error) => {
+    //   return (
+    //     <div key={errorMessage.length}>
+    //       <h1>{error.title}</h1>
+    //       <p>For more information open console</p>
+    //     </div>
+    //   );
+    // });
   }
 
   const pagination = {

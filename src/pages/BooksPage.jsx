@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BookMin from "../components/Book/Book-Min";
 
 import { fetchManga } from "../lib/fetchManga";
-import useHttps from "../hooks/useHttp";
+import { useHttps } from "../hooks/useHttps";
 
 import Button from "../components/UI/Button";
 
@@ -60,6 +60,7 @@ const BooksPage = () => {
               <BookMin
                 key={book.id}
                 title={book.attributes.canonicalTitle}
+                mangaData={book}
                 chapters={book.relationships.chapters.links.related}
                 imgLink={book.attributes.posterImage.small}
               />

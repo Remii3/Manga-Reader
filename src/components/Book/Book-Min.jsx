@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Card from "../UI/Card";
 import ChapterData from "../Chapters/Chapter-Data";
 
-import useHttps from "../../hooks/useHttp";
+import { useHttps } from "../../hooks/useHttps";
 import { fetchChapters } from "../../lib/fetchManga";
 
 import {
@@ -15,17 +15,20 @@ import {
 import { BookAllImageStyled } from "../../styles/shared/Img.styled";
 import { H3AllBookStyled } from "../../styles/shared/Title.styled";
 import { AllBookInformationListStyled } from "../../styles/shared/Ul.styled";
+import { useDispatch } from "react-redux";
+import { mangaDetailsSliceActions } from "../../features/mangaDetails-slice";
+
 ////////////////// to finish, make func to tell how old is chapter
 
 function BookMin(props) {
-  const { title, imgLink, chapters } = props;
+  const { mangaData, title, imgLink, chapters } = props;
   const {
     sendRequest,
     status,
     data: fetchedData,
     error: errorMessage,
   } = useHttps(fetchChapters, true);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     sendRequest({ chapters });
   }, [sendRequest, chapters]);
@@ -53,13 +56,24 @@ function BookMin(props) {
       return <ChapterData chapterInfo={fetchedData.data} />;
     }
   };
-
+  const showMangaDetailsHandler = () => {
+    dispatch(
+      mangaDetailsSliceActions.showMangaDetails({
+        mangaData: mangaData,
+        mangaChapters: fetchedData,
+      })
+    );
+  };
   return (
     <Card size={"small"}>
       <BookAllSpaceStyled>
         <BookAllPhotoSpaceStyled>
           <Link to={`/Books/${title}`}>
-            <BookAllImageStyled src={imgLink} alt="" />
+            <BookAllImageStyled
+              src={imgLink}
+              alt=""
+              onClick={showMangaDetailsHandler}
+            />
           </Link>
         </BookAllPhotoSpaceStyled>
         <BookAllDataSpaceStyled>

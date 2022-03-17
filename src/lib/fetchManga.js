@@ -10,6 +10,7 @@ export async function fetchManga(fetchData) {
     }
   );
   const data = await response.json();
+
   return data;
 }
 
@@ -21,6 +22,20 @@ export async function fetchChapters(fetchData) {
       "Content-Type": "application/vnd.api+json",
     },
   });
+  const data = await response.json();
+  return data;
+}
+export async function fetchChaptersDetails(fetchData) {
+  const response = await fetch(
+    `https://kitsu.io/api/edge/manga/${fetchData}/chapters?sort=-number`,
+    {
+      method: "get",
+      headers: {
+        Accept: "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+      },
+    }
+  );
   const data = await response.json();
   return data;
 }

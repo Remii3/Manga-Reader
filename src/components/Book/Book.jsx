@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Card from "../UI/Card";
 import ChapterData from "../Chapters/Chapter-Data";
 
-import useHttps from "../../hooks/useHttp";
+import { useHttps } from "../../hooks/useHttps";
 import { fetchChapters } from "../../lib/fetchManga";
 
 import { ChapterMainViewStyled } from "../../styles/shared/Container.styled";
@@ -15,16 +15,20 @@ import {
 import { BookMainImageStyled } from "../../styles/shared/Img.styled";
 import { MainBookInformationListStyled } from "../../styles/shared/Ul.styled";
 import { H3MainBookStyled } from "../../styles/shared/Title.styled";
+import { useDispatch } from "react-redux";
+import { mangaDetailsSliceActions } from "../../features/mangaDetails-slice";
 ////////////////// to finish, make func to tell how old is chapter
 
 function Book(props) {
-  const { title, imgLink, chapters } = props;
+  const { title, imgLink, mangaData, chapters } = props;
   const {
     sendRequest,
     status,
     data: fetchedData,
     error: errorMessage,
   } = useHttps(fetchChapters, true);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     sendRequest({ chapters });
@@ -54,20 +58,31 @@ function Book(props) {
     }
   };
 
+  const showMangaDetailsHandler = () => {
+    dispatch(
+      mangaDetailsSliceActions.showMangaDetails({
+        mangaData: mangaData,
+        mangaChapters: fetchedData,
+      })
+    );
+  };
+
   return (
     <Card size={"big"}>
       <ChapterMainViewStyled>
         <BookPhotoSpaceStyled>
           <Link to={`/Books/${title}`}>
-            <BookMainImageStyled src={imgLink} alt="" />
+            <BookMainImageStyled
+              src={imgLink}
+              alt=""
+              onClick={showMangaDetailsHandler}
+            />
           </Link>
         </BookPhotoSpaceStyled>
         <BookMainInformationSpaceStyled>
           <H3MainBookStyled>{title}</H3MainBookStyled>
           <MainBookInformationListStyled>
-            {fetchedData !== null &&
-              fetchedData.data.length > 0 &&
-              slicedEpisodes()}
+            {fetchedData !== null && slicedEpisodes()}
           </MainBookInformationListStyled>
         </BookMainInformationSpaceStyled>
       </ChapterMainViewStyled>

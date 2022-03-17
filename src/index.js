@@ -5,13 +5,16 @@ import App from "./App";
 
 import Themes from "./styles/global/Themes.jsx";
 import GlobalStyles from "./styles/global/GlobalStyles.jsx";
-
+import store from "./app/store";
+import { Provider } from "react-redux";
 ReactDOM.render(
   <BrowserRouter>
-    <Themes>
-      <GlobalStyles />
-      <App />
-    </Themes>
+    <Provider store={store}>
+      <Themes>
+        <GlobalStyles />
+        <App />
+      </Themes>
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

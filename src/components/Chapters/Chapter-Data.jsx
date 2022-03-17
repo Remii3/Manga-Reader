@@ -6,6 +6,12 @@ function ChapterData(props) {
   const { chapterInfo, withDate } = props;
 
   // const date = new Date().toUTCString();
+  if (chapterInfo.length <= 0) {
+    chapterInfo.push({
+      id: Math.floor(Math.random() * 10),
+      attributes: { number: "1", createdAt: "TBA" },
+    });
+  }
   return (
     <Fragment>
       {chapterInfo !== null &&
@@ -14,7 +20,9 @@ function ChapterData(props) {
           return (
             <li key={el.id}>
               <BookListDataStyled>
-                <span>Chapter {el.attributes.number}</span>{" "}
+                <span>
+                  Chapter {el.attributes.number ? el.attributes.number : "1"}
+                </span>
                 {withDate && (
                   <BookListDateStyled>
                     {el.attributes.createdAt.slice(0, 10)}

@@ -25,7 +25,7 @@ const httpReducer = (state, action) => {
   return state;
 };
 
-const useHttps = (requestedFunction, startWithPending = false) => {
+export const useHttps = (requestedFunction, startWithPending = false) => {
   const [httpState, dispatch] = useReducer(httpReducer, {
     status: startWithPending ? "pending" : null,
     data: null,
@@ -52,4 +52,3 @@ const useHttps = (requestedFunction, startWithPending = false) => {
     ...httpState,
   };
 };
-export default useHttps;
