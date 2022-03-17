@@ -1,7 +1,7 @@
-import BookDetails from "../components/BookDetails/BookDetails";
+import BookDetailsFunctionality from "../components/BookDetails/BookDetails-Functionality";
 
 function BookPage() {
-  return <BookDetails></BookDetails>;
+  return <BookDetailsFunctionality></BookDetailsFunctionality>;
 }
 
 export default BookPage;

@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mangaDetailsSlice from "../features/mangaDetails-slice";
-
+import favoriteSlice from "../features/favoriteSlice";
 const store = configureStore({
   reducer: {
-    mangaDetails: mangaDetailsSlice,
+    favoriteSlice: favoriteSlice,
   },
 });
 

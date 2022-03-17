@@ -60,7 +60,7 @@ const BooksPage = () => {
               <BookMin
                 key={book.id}
                 title={book.attributes.canonicalTitle}
-                mangaData={book}
+                mangaId={book.id}
                 chapters={book.relationships.chapters.links.related}
                 imgLink={book.attributes.posterImage.small}
               />

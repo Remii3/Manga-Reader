@@ -2,9 +2,10 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   colors: {
-    mainGrey_bgColor: "#222",
+    mainGrey_bgColor: "#222222",
     secondaryGrey_bgColor: "#2f2f2f",
     mainPurple_bgColor: "#913fe2",
+    lighterGrey_bgColor: "#343434",
 
     mainGrey_border: "1px solid #312f40",
 

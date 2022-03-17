@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// Home
+
 export const BooksUpperButtonSpaceStyled = styled.div`
   display: flex;
   justify-content: space-between;
@@ -82,6 +84,8 @@ export const BookMainInformationSpaceStyled = styled.div`
   width: calc(100% - 130px);
 `;
 
+// Books
+
 export const BookAllSpaceStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -97,4 +101,21 @@ export const BookAllDataSpaceStyled = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 147px;
+`;
+
+// Card Details
+
+export const CardHighlight = styled.div`
+  background-color: ${({ theme }) => theme.colors.mainGrey_bgColor};
+  margin: 0 0 2rem;
+  padding: 0.95rem;
+  color: #fff;
+  border-radius: 0.5rem;
+`;
+export const CardHighlightLightStyled = styled.div`
+  background-color: ${({ theme }) => theme.colors.lighterGrey_bgColor};
+  margin: 0 0 2rem;
+  padding: 0.95rem;
+  color: #fff;
+  border-radius: 0.5rem;
 `;
