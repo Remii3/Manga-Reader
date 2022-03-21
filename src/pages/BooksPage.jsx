@@ -23,7 +23,7 @@ const BooksPage = () => {
   let bookIncrement = 20;
 
   useEffect(() => {
-    sendRequest({ pages: 20, offset, sort: "id" });
+    sendRequest({ pages: 20, offset, sort: "id" }, "ALL_MANGA");
   }, [sendRequest, offset]);
 
   const fetchMoreHandler = () => {
@@ -61,7 +61,6 @@ const BooksPage = () => {
                 key={book.id}
                 title={book.attributes.canonicalTitle}
                 mangaId={book.id}
-                chapters={book.relationships.chapters.links.related}
                 imgLink={book.attributes.posterImage.small}
               />
             );

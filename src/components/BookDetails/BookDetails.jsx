@@ -9,9 +9,14 @@ import {
   CardHighlightLightStyled,
 } from "../../styles/shared/Div.styled";
 import { LinkStyled } from "../../styles/shared/Link.styled";
+
 function BookDetails(props) {
-  const { mangaData, title, mangaChapters } = props;
-  console.log(mangaData);
+  const { mangaData, title, mangaIncluded } = props;
+  const mangaGenres = mangaIncluded.filter((item) => item.type === "genres");
+  const mangaChapters = mangaIncluded.filter(
+    (item) => item.type === "chapters"
+  );
+
   const urlResult = useParams();
   return (
     <MainOuterStyled>
@@ -36,7 +41,6 @@ function BookDetails(props) {
               subtype {mangaData.attributes.subtype}
             </CardHighlightLightStyled>
           </div>
-          {/* title,alt titles, synopsis, author, released, posted At, updated at,genres */}
           <div>
             <h3>{mangaData.attributes.canonicalTitle}</h3>
             <p>
@@ -52,6 +56,14 @@ function BookDetails(props) {
             <p>Serialization: {mangaData.attributes.serialization}</p>
             <p>Created at: {mangaData.attributes.createdAt}</p>
             <p>Updated at: {mangaData.attributes.updatedAt}</p>
+            <p>
+              <span>Genres:</span>
+              {mangaGenres.map((item) => (
+                <li key={item.id}>
+                  <span>{item.attributes.name}</span>
+                </li>
+              ))}
+            </p>
           </div>
         </CardHighlight>
 

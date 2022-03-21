@@ -32,10 +32,17 @@ export const useHttps = (requestedFunction, startWithPending = false) => {
     error: null,
   });
   const sendRequest = useCallback(
-    async function (fetchData) {
+    async function (fetchData, mangaType) {
+      let fetchURL = "";
+      if (mangaType === "CURRENT") {
+        fetchURL = `https://kitsu.io/api/edge/manga?filter[id]=${fetchData}&include=genres,chapters`;
+      } else if ("ALL_MANGA") {
+        fetchURL = `https://kitsu.io/api/edge/manga?page[limit]=${fetchData.pages}&page[offset]=${fetchData.offset}&sort=${fetchData.sort}`;
+      }
+
       dispatch({ type: "SEND" });
       try {
-        const receivedData = await requestedFunction(fetchData);
+        const receivedData = await requestedFunction(fetchURL);
         if (receivedData.errors) {
           dispatch({ type: "ERROR", errorMessage: receivedData.errors });
         } else {

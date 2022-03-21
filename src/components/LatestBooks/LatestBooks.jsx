@@ -9,13 +9,12 @@ function LatestBooks(props) {
   const { mangaData, offset, fetchMore, fetchLess } = props;
   return (
     <Fragment>
-      {mangaData.map((book) => {
+      {mangaData.data.map((book) => {
         return (
           <Book
             key={book.id}
-            title={book.attributes.canonicalTitle}
             mangaId={book.id}
-            chapters={book.relationships.chapters.links.related}
+            title={book.attributes.canonicalTitle}
             imgLink={book.attributes.posterImage.tiny}
           />
         );

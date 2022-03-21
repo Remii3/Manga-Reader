@@ -15,7 +15,7 @@ import {
 } from "../styles/shared/Div.styled.jsx";
 import { H3Styled } from "../styles/shared/Title.styled.jsx";
 
-function MainPage() {
+const MainPage = () => {
   return (
     <MainOuterStyled>
       <TrendingOuterStyled>
@@ -34,6 +34,6 @@ function MainPage() {
       </UpdatedBooksOuterStyled>
     </MainOuterStyled>
   );
-}
+};
 
 export default MainPage;

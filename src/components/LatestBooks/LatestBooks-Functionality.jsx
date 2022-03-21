@@ -12,10 +12,9 @@ const LatestBooksFunctionality = () => {
     error: errorMessage,
   } = useHttps(fetchManga, true);
   let bookIncrement = 10;
-  console.log(fetchedData);
 
   useEffect(() => {
-    sendRequest({ pages: 10, offset, sort: "updatedAt" });
+    sendRequest({ pages: 10, offset, sort: "updatedAt" }, "ALL_MANGA");
   }, [sendRequest, offset]);
 
   const fetchMoreHandler = () => {
@@ -43,7 +42,7 @@ const LatestBooksFunctionality = () => {
   if (fetchedData === null) return;
   return (
     <LatestBooks
-      mangaData={fetchedData.data}
+      mangaData={fetchedData}
       offset={offset}
       fetchMore={fetchMoreHandler}
       fetchLess={fetchLessHandler}

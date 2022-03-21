@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 import ChapterData from "../Chapters/Chapter-Data";
 
 import { useHttps } from "../../hooks/useHttps";
-import { fetchChapters } from "../../lib/fetchManga";
+import { fetchManga } from "../../lib/fetchManga";
 
 import {
   BookAllDataSpaceStyled,
@@ -19,16 +19,16 @@ import { AllBookInformationListStyled } from "../../styles/shared/Ul.styled";
 ////////////////// to finish, make func to tell how old is chapter
 
 function BookMin(props) {
-  const { title, mangaId, imgLink, chapters } = props;
+  const { title, mangaId, imgLink } = props;
   const {
     sendRequest,
     status,
     data: fetchedData,
     error: errorMessage,
-  } = useHttps(fetchChapters, true);
+  } = useHttps(fetchManga, true);
   useEffect(() => {
-    sendRequest({ chapters });
-  }, [sendRequest, chapters]);
+    sendRequest(mangaId, "CURRENT");
+  }, [sendRequest, mangaId]);
 
   if (status === "pending") {
     return <h1 className="loading">Loading...</h1>;

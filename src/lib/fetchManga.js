@@ -1,23 +1,6 @@
-export async function fetchManga(fetchData) {
-  const response = await fetch(
-    `https://kitsu.io/api/edge/manga?page[limit]=${fetchData.pages}&page[offset]=${fetchData.offset}&sort=${fetchData.sort}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/vnd.api+json",
-        "Content-Type": "application/vnd.api+json",
-      },
-    }
-  );
-  const data = await response.json();
-
-  return data;
-}
-
-export async function fetchChapters(fetchData) {
-  // console.log(fetchData);
-  const response = await fetch(`${fetchData.chapters}?sort=-number`, {
-    method: "get",
+export const fetchManga = async (fetchURL) => {
+  const response = await fetch(fetchURL, {
+    method: "GET",
     headers: {
       Accept: "application/vnd.api+json",
       "Content-Type": "application/vnd.api+json",
@@ -25,36 +8,52 @@ export async function fetchChapters(fetchData) {
   });
   const data = await response.json();
   return data;
-}
+};
 
-export async function fetchChaptersDetails(fetchData) {
-  console.log(fetchData);
-  const response = await fetch(
-    `https://kitsu.io/api/edge/manga/${fetchData}/chapters?sort=-number`,
-    {
-      method: "get",
-      headers: {
-        Accept: "application/vnd.api+json",
-        "Content-Type": "application/vnd.api+json",
-      },
-    }
-  );
-  const data = await response.json();
-  return data;
-}
+// export const fetchChapters = async (fetchData) => {
+//   // console.log(fetchData);
+//   const response = await fetch(
+//     `https://kitsu.io/api/edge/manga/${fetchData}/chapters?sort=-number`,
+//     {
+//       method: "GET",
+//       headers: {
+//         Accept: "application/vnd.api+json",
+//         "Content-Type": "application/vnd.api+json",
+//       },
+//     }
+//   );
+//   const data = await response.json();
+//   return data;
+// };
 
-export async function fetchMangaDetails(fetchData) {
-  const response = await fetch(
-    `https://kitsu.io/api/edge/manga?filter[id]=${fetchData}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/vnd.api+json",
-        "Content-Type": "application/vnd.api+json",
-      },
-    }
-  );
-  const data = await response.json();
+// export const fetchMangaDetails = async (fetchURL) => {
+//   const response = await fetch(fetchURL, {
+//     method: "GET",
+//     headers: {
+//       Accept: "application/vnd.api+json",
+//       "Content-Type": "application/vnd.api+json",
+//     },
+//   });
+//   const data = await response.json();
+//   console.log(data);
+//   return data;
+// };
 
-  return data;
-}
+// export const fetchMangaGenres = async (fetchData) => {
+//   try {
+//     const response = await fetch(
+//       `https://kitsu.io/api/edge/manga/${fetchData}/genres`,
+//       {
+//         method: "GET",
+//         headers: {
+//           Accept: "application/vnd.api+json",
+//           "Content-Type": "application/vnd.api+json",
+//         },
+//       }
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (err) {
+//     throw new Error(err);
+//   }
+// };

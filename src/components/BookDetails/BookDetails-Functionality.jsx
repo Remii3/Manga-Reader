@@ -1,44 +1,35 @@
 import React, { useEffect } from "react";
-import BookDetails from "./BookDetails";
-
-import { fetchChaptersDetails, fetchMangaDetails } from "../../lib/fetchManga";
+import { useParams } from "react-router-dom";
 
 import { useHttps } from "../../hooks/useHttps";
-import { useParams } from "react-router-dom";
+import { fetchManga } from "../../lib/fetchManga";
+
+import BookDetails from "./BookDetails";
+
 const BookDetailsFunctionality = () => {
   const {
     sendRequest: sendRequestManga,
     status: statusManga,
     data: fetchedManga,
     error: errorMessageManga,
-  } = useHttps(fetchMangaDetails, true);
-  const {
-    sendRequest: sendRequestChapters,
-    status: statusChapters,
-    data: fetchedChapters,
-    error: errorMessageChapters,
-  } = useHttps(fetchChaptersDetails, true);
+  } = useHttps(fetchManga, true);
 
   const params = useParams();
-
   useEffect(() => {
-    sendRequestManga(params.bookId);
-    sendRequestChapters(params.bookId);
-  }, [sendRequestManga, sendRequestChapters, params.bookId]);
+    sendRequestManga(params.bookId, "CURRENT");
+  }, [sendRequestManga, params.bookId]);
 
-  if (statusManga === "pending" || statusChapters === "pending")
-    return <h1>Loading</h1>;
+  if (statusManga === "pending") return <h1>Loading</h1>;
 
-  if (errorMessageManga != null || errorMessageChapters != null)
-    return <h1>Not found</h1>;
-
+  if (errorMessageManga != null) return <h1>Not found</h1>;
+  console.log(fetchedManga);
   return (
     <>
-      {fetchedManga != null && fetchedChapters != null && (
+      {fetchedManga != null && (
         <BookDetails
           title={fetchedManga.data[0].attributes.canonicalTitle}
           mangaData={fetchedManga.data[0]}
-          mangaChapters={fetchedChapters.data}
+          mangaIncluded={fetchedManga.included}
         />
       )}
     </>

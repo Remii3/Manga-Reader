@@ -8,7 +8,7 @@ import AuthPage from "./pages/AuthPage";
 import Main from "./components/Layout/Main";
 import FavoritesPage from "./pages/FavoritesPage";
 
-function App() {
+const App = () => {
   return (
     <Fragment>
       <Main>
@@ -22,6 +22,6 @@ function App() {
       </Main>
     </Fragment>
   );
-}
+};
 
 export default App;
